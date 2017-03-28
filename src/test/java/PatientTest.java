@@ -76,4 +76,14 @@ public class PatientTest {
     assertEquals(Patient.find(firstPatient.getId()), firstPatient);
   }
 
+  @Test
+  public void save_savesDoctorIdIntoDB() {
+    Doctor testDoctor = new Doctor("testDoctor", 1);
+    testDoctor.save();
+    Patient testPatient = new Patient("testPatient", "2001-01-01", testDoctor.getId());
+    testPatient.save();
+    Patient savedPatient = Patient.find(testPatient.getId());
+    assertEquals(savedPatient.getDoctorId(), testDoctor.getId());
+  }
+
 }

@@ -1,3 +1,24 @@
 <!--index.vtl-->
+<form action="/specialties">
+  <label for="specialtyId">Select a Specialty</label>
+  <select id="specialtyId" name="specialtyId" type="text">
+    #foreach($specialty in $specialties)
+      <option value="$specialty.getId()">$specialty.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
 
+<form action="/doctors">
+  <label for="doctorId">Select a Doctor</label>
+  <select id="doctorId" name="doctorId" type="text">
+    #foreach($doctor in $doctors)
+      <option value="$doctor.getId()">$doctor.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+
+<a class="btn btn-primary" href="/admin">Admin</a>
 <!--index.vtl-->

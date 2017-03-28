@@ -1,0 +1,43 @@
+<!--admin.vtl-->
+<br>
+
+<h3>Add Specialty</h3>
+<form action="/specialties" method="post">
+  <input  id="specialties" name="specialtyName" type="text">
+  <button type="submit" class="btn btn-success">submit</button>
+</form>
+
+<h3> Add Patient</h3>
+<form action="/patients" method="post">
+  <input id="patientsName" name="name" type="text">
+  <input id="patientsDOB" name="dob" type="date">
+  <select id="patientsDoctor" name="doctor" type="text">
+    #foreach ($doctor in $doctors)
+      <option value="$doctor.getId()">$doctor.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-success">submit</button>
+</form>
+
+<h3>Add Doctor</h3>
+<form action="/doctors" method="post">
+  <label for="specialtyId">Specialty</label>
+  <select id="specialtyId" name="specialtyId" type="text">
+    #foreach($specialty in $specialties)
+      <option value="$specialty.getId()">$specialty.getName()</option>
+    #end
+  </select>
+
+  <label for="doctorName"></label>
+  <input id="doctorName" type="text" name="doctorName">
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+
+<h3>Doctors on Staff</h3>
+#foreach($specialty in $specialties)
+  <h4>$specialty.getName()</h4>
+  #set ($specialtyDoctors = $specialty.getDoctors())
+  #parse("templates/doctortemplate.vtl")
+#end
+<!--admin.vtl-->

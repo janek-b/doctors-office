@@ -1,0 +1,5 @@
+<ul>
+#foreach($doctor in $specialtyDoctors)
+  <li>$doctor.getName()<span> $specialty.find($doctor.getSpecialtyId()).getName()</span></li>
+#end
+</ul>

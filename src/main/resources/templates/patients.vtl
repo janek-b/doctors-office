@@ -1,0 +1,7 @@
+<!--patients.vtl-->
+<ul>
+  #foreach ($patient in $doctor.getPatients())
+    <li>Name: $patient.getName() DOB: $patient.getDOB()</li>
+  #end
+</ul>
+<!--patients.vtl-->
