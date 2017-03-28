@@ -56,7 +56,7 @@ public class Specialty {
 
   public List<Doctor> getDoctors() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM doctors WHERE specialtyId = :id";
+      String sql = "SELECT * FROM doctors WHERE specialtyId = :id ORDER BY name ASC";
       return con.createQuery(sql)
         .addParameter("id", this.id)
         .executeAndFetch(Doctor.class);
