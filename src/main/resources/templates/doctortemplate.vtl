@@ -1,5 +1,5 @@
 <ul>
 #foreach($doctor in $specialtyDoctors)
-  <li>$doctor.getName()<span> $specialty.find($doctor.getSpecialtyId()).getName()</span></li>
+  <li><a href="/specialties/$doctor.getSpecialtyId()/doctors/$doctor.getId()"> $doctor.getName(), <span> $specialty.find($doctor.getSpecialtyId()).getName()</span></a></li>
 #end
 </ul>

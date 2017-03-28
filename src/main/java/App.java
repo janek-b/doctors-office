@@ -89,5 +89,21 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/specialties/:id/doctors/:did/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Doctor doctor = Doctor.find(Integer.parseInt(request.params(":did")));
+      doctor.delete();
+      response.redirect("/admin");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/specialties/:id/doctors/:did", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Doctor doctor = Doctor.find(Integer.parseInt(request.params(":did")));
+      model.put("doctor", doctor);
+      model.put("template", "templates/doctor.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

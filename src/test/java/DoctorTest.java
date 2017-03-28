@@ -108,4 +108,13 @@ public class DoctorTest {
     assertTrue(doctor.getPatients().containsAll(Arrays.asList(patients)));
   }
 
+  @Test
+  public void delete_deletesDoctor_true() {
+    Doctor myDoctor = new Doctor("testDoctor", 1);
+    myDoctor.save();
+    int myDoctorId = myDoctor.getId();
+    myDoctor.delete();
+    assertEquals(null, Doctor.find(myDoctorId));
+  }
+
 }

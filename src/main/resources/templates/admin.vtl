@@ -1,43 +1,53 @@
 <!--admin.vtl-->
 <br>
 
-<h3>Add Specialty</h3>
-<form action="/specialties" method="post">
-  <input  id="specialties" name="specialtyName" type="text">
-  <button type="submit" class="btn btn-success">submit</button>
-</form>
+<div class="well">
+  <h3>Add Specialty</h3>
+  <form action="/specialties" method="post">
+    <input  id="specialties" name="specialtyName" type="text" class="form-control" placeholder="Add name of specialty" required>
+    <button type="submit" class="btn btn-success">submit</button>
+  </form>
+</div>
 
-<h3> Add Patient</h3>
-<form action="/patients" method="post">
-  <input id="patientsName" name="name" type="text">
-  <input id="patientsDOB" name="dob" type="date">
-  <select id="patientsDoctor" name="doctor" type="text">
-    #foreach ($doctor in $doctors)
+<div class="well">
+  <h3> Add Patient</h3>
+  <form action="/patients" method="post">
+    <input id="patientsName" name="name" type="text" class="form-control" placeholder="Enter patient name" required>
+    <input id="patientsDOB" name="dob" type="date" class="form-control" required>
+    <select id="patientsDoctor" name="doctor" type="text" class="form-control" required>
+      #foreach ($doctor in $doctors)
       <option value="$doctor.getId()">$doctor.getName()</option>
-    #end
-  </select>
-  <button type="submit" class="btn btn-success">submit</button>
-</form>
+      #end
+    </select>
+    <button type="submit" class="btn btn-success">submit</button>
+  </form>
+</div>
 
-<h3>Add Doctor</h3>
-<form action="/doctors" method="post">
-  <label for="specialtyId">Specialty</label>
-  <select id="specialtyId" name="specialtyId" type="text">
-    #foreach($specialty in $specialties)
+<div class="well">
+  <h3>Add Doctor</h3>
+  <form action="/doctors" method="post">
+    <label for="specialtyId">Specialty</label>
+    <select id="specialtyId" name="specialtyId" type="text" class="form-control" required>
+      #foreach($specialty in $specialties)
       <option value="$specialty.getId()">$specialty.getName()</option>
-    #end
-  </select>
+      #end
+    </select>
 
-  <label for="doctorName"></label>
-  <input id="doctorName" type="text" name="doctorName">
-  <button type="submit" class="btn btn-primary">submit</button>
-</form>
+    <label for="doctorName"></label>
+    <input id="doctorName" type="text" name="doctorName" class="form-control" placeholder="Enter Doctor's name"required>
+    <button type="submit" class="btn btn-success">submit</button>
+  </form>
+  <hr>
 
+</div>
 
-<h3>Doctors on Staff</h3>
-#foreach($specialty in $specialties)
-  <h4>$specialty.getName()</h4>
-  #set ($specialtyDoctors = $specialty.getDoctors())
-  #parse("templates/doctortemplate.vtl")
-#end
+<div class="well">
+  <h3>Doctors on Staff</h3>
+  #foreach($specialty in $specialties)
+    <h4>$specialty.getName()</h4>
+    #set ($specialtyDoctors = $specialty.getDoctors())
+    #parse("templates/doctortemplate.vtl")
+  #end
+
+</div>
 <!--admin.vtl-->

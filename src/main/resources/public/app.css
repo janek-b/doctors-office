@@ -1,0 +1,32 @@
+
+h3 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+form{
+  margin-top: 30px;
+  margin-bottom: 30;
+}
+.container{
+  width: 80%;
+}
+
+nav{
+  margin: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+body{
+  background-color: beige;
+}
+
+input{
+  min-width: 250px;
+}
+select{
+  min-width: 250px;
+}
+
+ul{
+list-style: none;
+}
